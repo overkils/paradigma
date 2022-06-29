@@ -43,6 +43,7 @@ body {
     padding-top: 43px;
     @media screen and (max-width: 992px) {
         padding-top: unset;
+        width: 100vw;
     }
 }
 
@@ -55,23 +56,20 @@ body {
 
 .adap__wrapper {
     position: relative;
-    display: flex;
-    display: -webkit-flex;
-    width: 100vw;
-    justify-content: space-between;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .menu__btn {
-    @media screen and (max-width: 992px) {
-        display: flex;
-        display: -webkit-flex;
-    }
     display: none;
     position: relative;
     width: 20px;
     height: 16px;
-    top: 29px;
-    right: 22px;
+    justify-self: flex-end;
+    align-self: center;
+    margin-bottom: 60px;
+    margin-right: 20px;
     &::after,
     &::before {
         position: absolute;
@@ -99,6 +97,11 @@ body {
         top: 45%;
         border-radius: 2px;
         transition: opacity 0.3s;
+    }
+
+    @media screen and (max-width: 992px) {
+        display: flex;
+        display: -webkit-flex;
     }
 }
 
@@ -390,7 +393,7 @@ main > .container {
         left: -19%;
         right: 0;
         transform: translateY(460px);
-        transition: transform 1s;
+        transition: transform 0.8s;
     }
     margin-right: 71px;
 }
