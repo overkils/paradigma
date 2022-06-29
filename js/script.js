@@ -84,3 +84,12 @@ function closePoap() {
         poap__wrapper.removeAttribute('style');
     }, 400);
 }
+
+const text_toUp_sidebar = _('.item__text-btn');
+const sidebar = _('.sidebar');
+
+
+_('.sidebar__btn ').addEventListener('click', () => {
+    _('.sidebar__btn').classList.toggle('active');
+    _('.sidebar').classList.toggle('active');
+})

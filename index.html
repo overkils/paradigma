@@ -16,6 +16,11 @@
 <body>
     <header class="header">
         <div class="container">
+            <div class="adap__wrapper">
+                <button class="menu__btn">
+                    <span class="menu__btn-line"></span>
+                </button>
+            </div>
             <nav class="header__menu">
                 <ul class="menu__items">
                     <li class="menu__item">
@@ -64,31 +69,8 @@
                     <div class="price__icon">Pdf</div>
                     <button class="price__btn">Скачать прайс-каталог</button>
                 </div>
-                <a href="#" class="lower-menu__logo">
+                <a href="#" class="lower-menu__logo" data-da=".adap__wrapper,992,first">
                     <img src="image/logo.png" alt="Лого этого сайта" class="logo__picture">
-                    <svg width="374" height="248" viewBox="0 0 374 248" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_1_1125)">
-                            <path
-                                d="M187 25H50V129.073C50 138.022 54.4674 146.474 61.913 151.446C84.4155 166.195 128.097 171.332 157.383 172.99C160.857 173.155 164.167 171.332 165.987 168.349C170.289 161.223 178.065 156.417 187 156.417C195.935 156.417 203.711 161.223 208.013 168.349C209.833 171.332 213.142 173.155 216.617 172.99C245.903 171.167 289.585 166.195 312.087 151.446C319.533 146.474 324 138.188 324 129.073V25H187Z"
-                                fill="white" />
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_1_1125" x="0" y="0" width="374" height="248"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                <feColorMatrix in="SourceAlpha" type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                <feOffset dy="25" />
-                                <feGaussianBlur stdDeviation="25" />
-                                <feComposite in2="hardAlpha" operator="out" />
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1125" />
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1125"
-                                    result="shape" />
-                            </filter>
-                        </defs>
-                    </svg>
-
                 </a>
                 <div class="lower-menu__socials">
                     <div class="socials__text">
@@ -139,15 +121,17 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="lower-menu__schedule">
-                    <div class="schedule__days">
-                        <span>Пн-Пт&nbsp</span>
-                        <p>9:00 - 18:00,&nbsp</p>
-                        <span>&nbspСб&nbsp</span>
-                        <p>10:00 - 18:00</p>
+                <div class="lower-menu__schedule" data-da=".adap__wrapper,992,2">
+                    <div class=" schedule__days">
+                        <p>
+                            <span>Пн-Пт </span>
+                            9:00 - 18:00,
+                            <span> Сб </span>
+                            10:00 - 18:00
+                        </p>
                     </div>
                     <div class="schedule__phone">
-                        <a href="tel:88002225460">8 (800) 222-54-60</a>
+                        <a class="link__phone" href="tel:88002225460">8 (800) 222-54-60</a>
                     </div>
                     <button class="schedule__btn">
                         Позвоните мне
@@ -159,9 +143,20 @@
     <main>
         <div class="container">
             <aside class="sidebar">
+                <button class="sidebar__btn">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.40864 5.99915L11.7045 1.71268C11.8926 1.52453 11.9983 1.26935 11.9983 1.00326C11.9983 0.737183 11.8926 0.481998 11.7045 0.29385C11.5164 0.105701 11.2612 0 10.9952 0C10.7291 0 10.474 0.105701 10.2859 0.29385L6 4.59031L1.71414 0.29385C1.52602 0.105701 1.27087 -1.98247e-09 1.00483 0C0.738783 1.98247e-09 0.483635 0.105701 0.295513 0.29385C0.107391 0.481998 0.00170495 0.737183 0.00170495 1.00326C0.00170495 1.26935 0.107391 1.52453 0.295513 1.71268L4.59136 5.99915L0.295513 10.2856C0.201875 10.3785 0.127553 10.489 0.0768329 10.6108C0.0261132 10.7325 0 10.8631 0 10.995C0 11.1269 0.0261132 11.2575 0.0768329 11.3793C0.127553 11.501 0.201875 11.6116 0.295513 11.7044C0.388386 11.7981 0.49888 11.8724 0.620622 11.9232C0.742363 11.9739 0.872943 12 1.00483 12C1.13671 12 1.26729 11.9739 1.38903 11.9232C1.51077 11.8724 1.62127 11.7981 1.71414 11.7044L6 7.40799L10.2859 11.7044C10.3787 11.7981 10.4892 11.8724 10.611 11.9232C10.7327 11.9739 10.8633 12 10.9952 12C11.1271 12 11.2576 11.9739 11.3794 11.9232C11.5011 11.8724 11.6116 11.7981 11.7045 11.7044C11.7981 11.6116 11.8724 11.501 11.9232 11.3793C11.9739 11.2575 12 11.1269 12 10.995C12 10.8631 11.9739 10.7325 11.9232 10.6108C11.8724 10.489 11.7981 10.3785 11.7045 10.2856L7.40864 5.99915Z"
+                            fill="white" />
+                    </svg>
+                </button>
                 <ul class="sidebar__items">
                     <li class="sidebar__item">
                         <p><span>Гарантия от 50 лет</span> на материалы и 5 лет на монтаж</p>
+                        <div class="item__text-btn">
+                            <p>Нажмите на плюсик, чтобы увидеть
+                                все преимущества работы с нами</p>
+                            </p>
                     </li>
                     <li class="sidebar__item">
                         <p><span>Замер, монтажный проект</span> и <br> еще 4 услуги бесплатно </p>
@@ -198,7 +193,7 @@
                         и монтаж под ключ
                     </p>
                 </div>
-                <ul class="head__btns">
+                <ul class="head__btns" data-da=".head,992,last">
                     <li class="btns__item">
                         <button class="head__btn">
                             Рассчитать стоимость <br>материалов и монтажа
@@ -276,6 +271,7 @@
         </div>
     </div>
     <script src="js/script.js"></script>
+    <script src="js/dynamicAdapt.js"></script>
 </body>
 
 </html>
