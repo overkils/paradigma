@@ -6,6 +6,35 @@ function __(elem) {
     return document.querySelectorAll(`${elem}`)
 }
 
+const poap__open = _('.schedule__btn');
+const poap__wrapper = _('.poap__wrapper');
+const poap__body = _('.poap');
+const btn__closed = _('.btn__closed');
+const btnMenu = _('.menu__btn');
+const checkbox = _("#checkbox");
+const text_toUp_sidebar = _('.item__text-btn');
+const sidebar = _('.sidebar');
+const wrappper_header = _('.adap__wrapper');
+const menu__text = _('.lower-menu__text');
+var submitBtn = _(".forms__submit");
+
+let toggle = () => btnMenu.classList.toggle('active');
+let toggleS = () => wrappper_header.classList.toggle('active');
+let activeMenu = () => _('.adap__menu').classList.toggle('active');
+
+btnMenu.addEventListener('click', () => {
+    toggle();
+    toggleS();
+    activeMenu();
+});
+
+if (window.innerWidth <= 992) {
+    var Allpost = __("br");
+    for (let i = 0; i < Allpost.length; i++) {
+        var allPnull = Allpost[i]
+        allPnull.remove();
+    };
+}
 
 window.addEventListener("DOMContentLoaded", function () {
     [].forEach.call(document.querySelectorAll('.tel'), function (input) {
@@ -44,17 +73,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
-const checkbox = _("#checkbox");
-var submitBtn = _(".forms__submit");
 checkbox.addEventListener('click', () =>
     submitBtn.toggleAttribute("disabled")
 )
-
-const poap__open = _('.schedule__btn');
-const poap__wrapper = _('.poap__wrapper');
-const poap__body = _('.poap');
-const btn__closed = _('.btn__closed');
-
 
 poap__open.addEventListener('click', () => {
     openPoap();
@@ -85,11 +106,8 @@ function closePoap() {
     }, 400);
 }
 
-const text_toUp_sidebar = _('.item__text-btn');
-const sidebar = _('.sidebar');
-
-
 _('.sidebar__btn ').addEventListener('click', () => {
     _('.sidebar__btn').classList.toggle('active');
     _('.sidebar').classList.toggle('active');
+    _('.opacity').classList.toggle('active');
 })

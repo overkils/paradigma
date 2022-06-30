@@ -48,9 +48,6 @@ body {
 }
 
 .header__menu {
-    @media screen and (max-width: 992px) {
-        display: none;
-    }
     margin-bottom: 37px;
 }
 
@@ -58,7 +55,18 @@ body {
     position: relative;
     display: grid;
     width: 100%;
+    padding-bottom: 20px;
     grid-template-columns: 1fr 1fr 1fr;
+    transition: background-color 0.3s;
+    @media screen and (max-width: 320px) {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+}
+
+.active {
+    &.adap__wrapper {
+        background-color: #edf2f5;
+    }
 }
 
 .menu__btn {
@@ -70,6 +78,7 @@ body {
     align-self: center;
     margin-bottom: 60px;
     margin-right: 20px;
+    grid-column: 3 / 4;
     &::after,
     &::before {
         position: absolute;
@@ -94,7 +103,7 @@ body {
         height: 2px;
         background-color: #1c1c1c;
         position: absolute;
-        top: 45%;
+        top: 7px;
         border-radius: 2px;
         transition: opacity 0.3s;
     }
@@ -102,6 +111,8 @@ body {
     @media screen and (max-width: 992px) {
         display: flex;
         display: -webkit-flex;
+        margin-right: 40px;
+        margin-bottom: 20px;
     }
 }
 
@@ -125,6 +136,20 @@ body {
     display: -webkit-flex;
     justify-content: space-between;
     margin-right: 27px;
+    @media screen and (max-width: 992px) {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 0;
+    }
+}
+
+.menu__item {
+    @media screen and (max-width: 992px) {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .menu__link {
@@ -157,7 +182,10 @@ hr {
 
 .header__lower-menu {
     @media screen and (max-width: 992px) {
-        display: none;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        align-items: center;
     }
     display: flex;
     display: -webkit-flex;
@@ -170,6 +198,9 @@ hr {
     @include adaptive-font(12, 8);
     max-width: 206px;
     letter-spacing: normal;
+    @media screen and (max-width: 992px) {
+        margin-bottom: 16px;
+    }
 }
 
 .lower-menu__text > p {
@@ -185,6 +216,9 @@ hr {
     display: -webkit-flex;
     align-items: center;
     position: relative;
+    @media screen and (max-width: 992px) {
+        margin-bottom: 16px;
+    }
 }
 
 .price__icon {
@@ -247,6 +281,12 @@ hr {
 .logo__picture {
     @media screen and (max-width: 1024px) {
         width: 90%;
+    }
+    @media screen and (max-width: 768px) {
+        width: 75%;
+    }
+    @media screen and (max-width: 320px) {
+        width: 80%;
     }
 }
 
@@ -321,6 +361,11 @@ hr {
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    @media screen and (max-width: 768px) {
+        padding-top: 10px;
+    }
 }
 
 .schedule__days {
@@ -338,6 +383,9 @@ hr {
 
 .schedule__phone {
     margin-bottom: 11px;
+    @media screen and (max-width: 375px) {
+        margin-bottom: 5px;
+    }
 }
 
 .link__phone {
@@ -365,12 +413,46 @@ hr {
     line-height: 15px;
 }
 
+.adap__menu {
+    position: relative;
+    background-color: #edf2f5;
+    padding-bottom: 40px;
+    opacity: 0;
+    height: 0;
+    z-index: -1;
+    transition: opacity 0.6s, height 0.6s, z-index 0.6s;
+    &.active {
+        opacity: 1;
+        z-index: 9999;
+        height: 100vh;
+    }
+}
+
+.opacity {
+    @media screen and (max-width: 992px) {
+        position: absolute;
+        opacity: 0;
+        inset: 0;
+        z-index: -1;
+        transition: z-index 0.3s, opacity 0.3s;
+        background-color: rgba(79, 79, 79, 0.1);
+        backdrop-filter: blur(1px);
+        &.active {
+            z-index: 999;
+            opacity: 1;
+        }
+    }
+}
+
 main {
-    padding-top: 52px;
     @media screen and (max-width: 992px) {
         padding-top: unset;
         height: 100%;
         flex: 1 1 auto;
+        padding-top: 52px;
+    }
+    @media screen and (max-width: 468px) {
+        padding-top: unset;
     }
 }
 
@@ -385,15 +467,22 @@ main > .container {
 
 .sidebar {
     @media screen and (max-width: 992px) {
-        min-width: 200px;
-        max-width: 260px;
         margin-right: unset;
         position: absolute;
         bottom: 0;
-        left: -19%;
+        left: 0;
         right: 0;
         transform: translateY(460px);
         transition: transform 0.8s;
+        z-index: 999;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 375px) {
+        transform: translateY(400px);
     }
     margin-right: 71px;
 }
@@ -410,12 +499,16 @@ main > .container {
         }
     }
 
-    &.sidebar > .sidebar__items > .sidebar__item > .item__text-btn {
+    &.sidebar > .sedibar__wrapper > .sidebar__items > .sidebar__item > .item__text-btn {
         @media screen and (max-width: 992px) {
             opacity: 0;
             height: 0px;
         }
     }
+}
+
+.sedibar__wrapper {
+    position: relative;
 }
 
 .sidebar__btn {
@@ -428,6 +521,7 @@ main > .container {
     right: 7%;
     width: 34px;
     height: 34px;
+    z-index: 9999;
     background-color: #f38120;
     border-radius: 50%;
     & > svg {
@@ -438,6 +532,10 @@ main > .container {
         display: flex;
         display: -webkit-flex;
     }
+    @media screen and (max-width: 468px) {
+        right: 5%;
+        top: 34px;
+    }
 }
 
 .active {
@@ -447,6 +545,8 @@ main > .container {
 }
 
 .sidebar__items {
+    max-width: 260px;
+    min-width: 200px;
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
@@ -518,6 +618,9 @@ main > .container {
         flex-direction: column;
         align-items: center;
     }
+    @media screen and (max-width: 375px) {
+        padding-top: unset;
+    }
     padding-top: 33px;
 }
 
@@ -525,6 +628,9 @@ main > .container {
     @media screen and (max-width: 992px) {
         text-align: center;
         line-height: 60px;
+    }
+    @media screen and (max-width: 468px) {
+        line-height: 30px;
     }
     font-weight: 300;
     @include adaptive-font(55, 18);
@@ -557,18 +663,28 @@ main > .container {
     margin-bottom: 38px;
     @media screen and (max-width: 992px) {
         width: 100%;
-        max-width: 40vw;
+        max-width: 50vw;
         flex-direction: column;
         align-items: center;
+    }
+    @media screen and (max-width: 768px) {
+        max-width: 67vw;
+    }
+    @media screen and (max-width: 468px) {
+        max-width: 85vw;
     }
 }
 
 .btns__item {
     &:last-child > .head__btn {
         max-width: 335px;
+        padding: 27px 50px 29px 45px;
         background-color: #f38120;
         @media screen and (max-width: 992px) {
             max-width: unset;
+        }
+        @media screen and (max-width: 375px) {
+            padding: 14px 52px 14px 45px;
         }
     }
 
@@ -614,9 +730,10 @@ main > .container {
     height: 100%;
     border-radius: 500px;
     background-color: #12c868;
-    padding: 27px 58px 29px 53px;
+    padding: 27px 58px 29px 50px;
     font-weight: 600;
-    font-size: 14px;
+    @include adaptive-font(14, 8);
+    font-family: "Montserrat", sans-serif;
     line-height: 22px;
     letter-spacing: 0.02em;
     color: #fff;
@@ -634,6 +751,9 @@ main > .container {
         max-width: unset;
         width: 100%;
     }
+    @media screen and (max-width: 375px) {
+        padding: 14px 52px 14px 45px;
+    }
 }
 
 .head__text {
@@ -643,6 +763,12 @@ main > .container {
         flex-direction: column;
         align-items: center;
         margin-bottom: 3vh;
+    }
+
+    & > p {
+        @include adaptive-font(14, 10);
+        line-height: 12px;
+        letter-spacing: 0.02em;
     }
 
     & > svg {
@@ -661,7 +787,7 @@ main > .container {
 
 .head__text > p > span {
     font-weight: 600;
-    @include adaptive-font(14, 8);
+    @include adaptive-font(14, 10);
     line-height: 22px;
     letter-spacing: 0.02em;
 }
@@ -676,6 +802,7 @@ main > .container {
     transition: opacity 0.3s;
     background-color: #11111199;
     opacity: 0;
+    z-index: 9999;
 }
 
 .poap {
@@ -693,12 +820,24 @@ main > .container {
     z-index: 9999;
     opacity: 0;
     transition: opacity 0.3s;
+    @media screen and (max-width: 375px) {
+        max-width: 296px;
+        padding: 30px 20px 40px;
+    }
 }
 
 .btn__closed {
     position: absolute;
     top: 45px;
     right: 47px;
+    @media screen and (max-width: 375px) {
+        top: 15px;
+        right: 15px;
+        & > svg {
+            width: 10px;
+            height: 10px;
+        }
+    }
 }
 
 .poap__title {
@@ -707,6 +846,9 @@ main > .container {
     line-height: 30px;
     margin-bottom: 14px;
     letter-spacing: 0.02em;
+    @media screen and (max-width: 375px) {
+        margin-bottom: 7px;
+    }
 }
 
 .poap__text {
@@ -715,6 +857,9 @@ main > .container {
     line-height: 24px;
     color: #000;
     margin-bottom: 24px;
+    @media screen and (max-width: 375px) {
+        margin-bottom: 12px;
+    }
 }
 
 .poap__days {
@@ -723,6 +868,9 @@ main > .container {
     line-height: 15px;
     color: #00000075;
     margin-bottom: 28px;
+    @media screen and (max-width: 375px) {
+        margin-bottom: 14px;
+    }
 }
 
 .poap__forms {
@@ -785,6 +933,13 @@ main > .container {
     color: #fff;
     margin-bottom: 19px;
     transition: background-color 0.3s;
+    @media screen and (max-width: 375px) {
+        padding: 10px 60px;
+    }
+
+    @media screen and (max-width: 320px) {
+        font-size: 8px;
+    }
 }
 
 .forms__submit svg {
@@ -823,6 +978,9 @@ main > .container {
     font-weight: 500;
     @include adaptive-font(12, 8);
     line-height: 21px;
+    @media screen and (max-width: 375px) {
+        font-size: 7px;
+    }
 }
 
 .checkbox__link {
